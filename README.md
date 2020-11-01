@@ -13,6 +13,8 @@ For Windows : https://techpluslifestyle.com/technology/how-to-install-django-3-o
 
 For Ubuntu :  https://techpluslifestyle.com/technology/how-to-install-django-3-on-ubuntu/
 
+Database : Sqlite (Django's Default DB)
+
 Install the requirements.
 ```bash
 pip install -r requirements.txt
