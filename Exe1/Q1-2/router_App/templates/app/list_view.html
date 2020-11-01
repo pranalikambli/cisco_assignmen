@@ -1,0 +1,105 @@
+<table class="table table-bordered">
+    <thead class="alert-warning">
+        <tr>
+            <th>Sapid</th>
+            <th>Hostname</th>
+            <th>LoopBack</th>
+            <th>Mac Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+     {% comment %}
+     <tr>
+         <td>
+             <input name="sapid1" id="sapid" type="text" class="form-control search" value=""  placeholder="" autocomplete="off"/>
+         </td>
+           <td>
+               <input name="hostname1" id="hostname" type="text" class="form-control search" value=""  placeholder="" autocomplete="off"/>
+           </td>
+           <td>
+               <input name="loopback1" id="loopback" type="text" class="form-control search" value=""  placeholder="" autocomplete="off"/>
+           </td>
+           <td>
+               <input name="mac_address1" id="mac_address" type="text" class="form-control search" value=""  placeholder="" autocomplete="off"/>
+           </td>
+     </tr>
+     {% endcomment %}
+
+     {% for each in record_list %}
+        <tr>
+            <td>{{ each.sapid }}</td>
+            <td>{{ each.hostname }}</td>
+            <td>{{ each.loopback }}</td>
+            <td>{{ each.mac_address }}</td>
+            <td><center><a class="btn-default" href="{% url 'update' each.id %}">
+                <span class="glyphicon glyphicon-edit"></span></a>
+                 <a class="btn-default" href="#" onclick="javascript:showdelete('{{ each.id }}')">
+                     <span class="glyphicon glyphicon-trash"></span>
+                 </a>
+                </center>
+
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Pagination -->
+{% if record_list.has_other_pages %}
+
+    <div class="text-center">
+        <ul class="pagination pagination-lg text-center">
+
+            {% if record_list.has_previous %}
+                <li>
+                    <a class="previous" href="?page=1"> << </a>
+                    <a class="previous" href="?page={{ record_list.previous_page_number }}"> < </a>
+                </li>
+            {% else %}
+                 <li class="disabled"><span> << </span></li>
+                <li class="disabled"><span> < </span></li>
+            {% endif %}
+
+            {% if start_index %}
+                <li>
+                    <a class="next" href="?page={{ start_index }}">{{ start_index }}</a>
+                </li>
+
+                <li class="disabled"><span>&mldr;</span></li>
+            {% endif %}
+
+            {% for i in page_range %}
+                {% if record_list.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                {% else %}
+                    <li>
+                        <a class="previous" href="?page={{ i }}">{{ i }}</a>
+
+                    </li>
+                {% endif %}
+            {% endfor %}
+            {% if record_list.has_next %}
+                {% if end_index %}
+                    <li class="disabled"><span>&mldr;</span></li>
+                    <li><a class="previous" href="?page={{ end_index }}">{{ end_index }}</a></li>
+
+                {% endif %}
+                <li>
+                    <a class="next"  href="?page={{ record_list.next_page_number }}"> > </a>
+                    <a class="next"  href="?page={{max_index}}"> >> </a>
+
+                </li>
+            {% else %}
+                <li class="disabled"><span> > </span></li>
+                <li class="disabled"><span> >> </span></li>
+            {% endif %}
+
+        </ul>
+    </div>
+
+   
+        
+{% endif %}
+<!--Pagination-->
+

@@ -1,0 +1,48 @@
+First Register any user then perform the below CRUD operation else it will show authentication error
+
+1. http://127.0.0.1:8000/rest-auth/registration/
+
+   - User Resistration
+
+2. http://127.0.0.1:8000/rest-auth/login/
+   - After Registration login user using Login API
+
+3. http://127.0.0.1:8000/rest-auth/logout/
+   - Logout API
+
+4. http://127.0.0.1:8000/router/create
+
+   - Cretae API sample ---> 
+{
+  "sapid":"sapid1",
+  "hostname":"www.google.com",
+  "loopback":"127.0.0.1",
+  "mac_address":"00:1B:44:11:3A:B7"
+}
+
+5. http://127.0.0.1:8000/router/get
+
+   - Get List of routers API
+
+6. http://127.0.0.1:8000/router/getsapid/sapid2
+ 
+   - Get Router info by Sapid API
+
+7. http://127.0.0.1:8000/router/getiprange/127.0.0.0-127.0.0.12 
+   - Ip Range Api
+
+8. http://127.0.0.1:8000/router/delete/127.0.0.1 
+   - Delete Api 
+
+
+
+
+9. http://127.0.0.1:8000/router/delete/127.0.0.1
+  - Update API :
+{"id":2,
+  "sapid":"sapid4",
+  "hostname":"www.google.com",
+  "loopback":"127.0.0.4",
+  "mac_address":"00:1B:44:11:3A:B6"
+}
+  

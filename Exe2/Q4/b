@@ -1,0 +1,4 @@
+Simply type top command:
+    top
+You can also use ps command to get more information about process.
+    ps aux | less

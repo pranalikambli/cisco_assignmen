@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static%}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> {{form.non_field_errors}}
+        </div>
+    {% endif %}
+    <div style="float:right">
+               <a href="/" class="btn btn-primary">Back</a>
+     </div>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        <br/>
+    <br/>
+    <input type="hidden" name="id" class="form-control" required="" value="{{ router_info.id }}"/>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Sapid</label>
+            <input type="text" name="sapid" class="form-control" required="required" value="{{ router_info.sapid }}"/>
+            <div style="color:red;list-style-type: none;">{{form.sapid.errors}}</div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Hostname</label>
+            <input type="text" name="hostname" class="form-control" required="required" value="{{ router_info.hostname }}" />
+            <div style="color:red;list-style-type: none;">{{form.hostname.errors}}</div>
+        </div>
+    </div>
+        <div class="clearfix"></div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Loopback</label>
+            <input type="text" name="loopback" class="form-control"  value="{{ router_info.loopback }}" required="required"/>
+            <div style="color:red;list-style-type: none;">{{form.loopback.errors}}</div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Mac Address</label>
+            <input type="text" name="mac_address" class="form-control"   value="{{ router_info.mac_address }}" required="required"/>
+            <div style="color:red;list-style-type: none;">{{form.mac_address.errors}}</div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-sm btn-primary"> UPDATE</button>
+        </div>
+    </div>
+        
+    </form>
+{% endblock %}

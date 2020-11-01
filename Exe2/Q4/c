@@ -1,0 +1,4 @@
+Check which process take more memory,then kill the process
+    sudo killall apache2
+    sudo kill -a httpd
+    kill -9 <pid>

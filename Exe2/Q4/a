@@ -1,0 +1,10 @@
+check memory usage
+    free -m
+You can display disk usage in a more human-readable format by adding the –h option:
+    df –h
+ check running httpd or apche process and memory using
+    sudo ps aux | grep -E 'apache2|httpd'
+check logs
+    sudo ls /var/log/httpd/
+
+

@@ -1,0 +1,11 @@
+INSERT INTO `router` (`sapid`, `hostname`, `loopback`, `mac_address`) VALUES
+(sapid1, 'www.google.com', '127.0.0.0', 00:25:96:FF:FE:12),
+(sapid2, 'www.google2.com', '127.0.0.1', 00:25:96:FF:FE:13),
+(sapid3, 'www.google2.com', '127.0.0.2', 00:25:96:FF:FE:14),
+(sapid4, 'www.google4.com', '127.0.0.3', 00:25:96:FF:FE:15),
+(sapid5, 'www.google5.com', '127.0.0.4', 00:25:96:FF:FE:16),
+(sapid6, 'www.google6.com', '127.0.0.5', 00:25:96:FF:FE:17),
+(sapid7, 'www.google7.com', '127.0.0.6', 00:25:96:FF:FE:18),
+(sapid8, 'www.google8.com', '127.0.0.7', 00:25:96:FF:FE:19),
+(sapid9, 'www.google9.com', '127.0.0.8', 00:25:96:FF:FE:20),
+(sapid10, 'www.google10.com', '127.0.0.9', 00:25:96:FF:FE:21);

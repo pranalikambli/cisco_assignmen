@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static%}
+
+<form  action="create" method="POST">
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>Danger!</strong> {{form.non_field_errors}}
+        </div>
+    {% endif %}
+    <br/>
+    <br/>
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Sapid</label>
+            <input type="text" name="sapid" class="form-control" required="required" value="{{form.sapid.data}}"/>
+            <div style="color:red;list-style-type: none;">{{form.sapid.errors}}</div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Hostname</label>
+            <input type="text" name="hostname" class="form-control" required="required" value="{{form.hostname.data}}"/>
+            <div style="color:red;list-style-type: none;">{{form.hostname.errors}}</div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Loopback</label>
+            <input type="text" name="loopback" class="form-control" required="required" value="{{form.loopback.data}}"/>
+            <div style="color:red;list-style-type: none;">{{form.loopback.errors}}</div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Mac Address</label>
+            <input type="text" name="mac_address" class="form-control" required="required" value="{{form.mac_address.data}}"/>
+            <div style="color:red;list-style-type: none;">{{form.mac_address.errors}}</div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+        </div>
+    </div>
+</form>
+<br />
+<br />
+<div class="alert alert-success" id="delete_success" style="display:none !important">
+    <button class="close" data-dismiss="alert" type="button">X</button>
+    <strong>Success!</strong> Router Details Deleted Successfully!
+</div>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <button class="close" data-dismiss="alert" type="button">X</button>
+            <strong>Success!</strong> {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class = "md-form mt-0">
+    <table class="table table-bordered">
+        <thead class="alert-warning">
+            <tr>
+                <th>
+                    <input name="sapid1" id="sapid" type="text" class="form-control search" value=""  placeholder="Search By SapId" autocomplete="off"/>
+                </th>
+                <th>
+                    <input name="hostname1" id="hostname" type="text" class="form-control search" value=""  placeholder="Search By hostname" autocomplete="off"/>
+                </th>
+                <th>
+                    <input name="loopback1" id="loopback" type="text" class="form-control search" value=""  placeholder="Search By Loopback" autocomplete="off"/>
+                </th>
+                <th>
+                    <input name="mac_address1" id="mac_address" type="text" class="form-control search" value=""  placeholder="Search By Mac Address" autocomplete="off"/>
+                </th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div id="results">
+
+</div>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure you want to Delete ?</h4>
+                <button class="close" data-dismiss="modal" type="button">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form id="updateStatusFrm">
+                <input type="hidden" name ="autoid" id="autoid" />
+                    <button class="btn btn-primary" onclick="javascript: deleterouters('');"
+                            type="button"><i
+                            class="fa fa-check ico-mar"></i>Yes
+                    </button>
+                    <button class="btn btn-danger" data-dismiss="modal" type="button">
+                        <i class="fa fa-times ico-mar"></i>No
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+        
+<script src="{% static 'crud/js/jquery-3.3.1.js' %}"></script>
+<script src="{% static 'crud/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'crud/js/router_info.js' %}"></script>
+{% endblock %}
